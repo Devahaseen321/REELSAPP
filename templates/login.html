@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset and Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus {
+            border-color: #2575fc;
+            outline: none;
+        }
+
+        button {
+            background-color: #2575fc;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #1b63c4;
+            transform: scale(1.05);
+        }
+
+        /* Keyframes for Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Bubbles Animation */
+        .bubble {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 8s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Different Bubble Sizes */
+        .bubble:nth-child(1) {
+            width: 50px;
+            height: 50px;
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 30px;
+            height: 30px;
+            left: 25%;
+            animation-duration: 8s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            left: 50%;
+            animation-duration: 10s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 40px;
+            height: 40px;
+            left: 70%;
+            animation-duration: 12s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 20px;
+            height: 20px;
+            left: 90%;
+            animation-duration: 7s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="container">
+        <h2>Login with Email or Mobile</h2>
+        <form action="/send_otp" method="POST">
+            <input type="text" name="name" placeholder="Enter Your Name" required>
+            <input type="text" name="identifier" placeholder="Enter Email or Mobile" required>
+            <select name="method" required>
+                <option value="mobile">Mobile</option>
+                <option value="email">Email</option>
+            </select>
+            <button type="submit">Send OTP</button>
+        </form>
+    </div>
+</body>
+
+</html>
