@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset and Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ff4757;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff6b81;
+            outline: none;
+        }
+
+        button {
+            background-color: #ff4757;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #e84118;
+            transform: scale(1.05);
+        }
+
+        /* Keyframes for Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Bubbles Animation */
+        .bubble {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 8s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Different Bubble Sizes */
+        .bubble:nth-child(1) {
+            width: 50px;
+            height: 50px;
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 30px;
+            height: 30px;
+            left: 25%;
+            animation-duration: 8s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            left: 50%;
+            animation-duration: 10s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 40px;
+            height: 40px;
+            left: 70%;
+            animation-duration: 12s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 20px;
+            height: 20px;
+            left: 90%;
+            animation-duration: 7s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="container">
+        <h2>Enter OTP</h2>
+        <form action="/verify_otp" method="POST">
+            <input type="hidden" name="identifier" value="{{ identifier }}">
+            <input type="text" name="otp" placeholder="Enter OTP" required>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+</body>
+</html>
